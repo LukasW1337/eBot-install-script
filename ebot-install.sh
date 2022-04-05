@@ -226,9 +226,9 @@ else
 	
 	mkdir /home/ebot
 	cd /home/ebot
-	wget https://github.com/deStrO/eBot-CSGO/archive/master.zip
+	wget https://github.com/tugamars/eBot-CSGO-gm/archive/master.zip
 	unzip master.zip
-	mv eBot-CSGO-master ebot-csgo
+	mv eBot-CSGO-gm-master ebot-csgo
 	cd ebot-csgo
 	curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
 	
