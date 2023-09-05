@@ -126,7 +126,7 @@ else
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 467B942D3A79BD29
  
 	apt-get update
-	apt-get install apache2 gcc make libxml2-dev autoconf ca-certificates unzip nodejs curl libcurl4-openssl-dev pkg-config libssl-dev screen -y
+	apt-get install apache2 gcc make libxml2-dev autoconf ca-certificates unzip nodejs curl libcurl4-openssl-dev pkg-config libssl-dev screen php5.6-dev -y
 	if [ $? != 0 ]; then
 		echo "(LINE 126) There is an error. Are you running apt application somewhere?"
 		echo "Can you check your debian source list?"
