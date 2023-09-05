@@ -186,7 +186,7 @@ else
 		echo "YOU WILL NEED IT AFTER FOR EBOT!!!"
 		read -n1 -r -p "Press any key to continue..."
 		
-		apt-get install mysql-server=5.7* -y
+		apt-get install mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7* -y
 		if [ $? != 0 ]; then
 			echo "(LINE 183) There is an error. Are you running the APT application somewhere?"
 			echo "Can you check your debian source list?"
