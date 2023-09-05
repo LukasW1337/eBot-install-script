@@ -117,6 +117,10 @@ else
 	read -n1 -r -p "Press any key to continue..."
 	
 	# 2) Install SERVER-REQUIREMENTS
+
+	LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+ 	LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/apache2
+ 
 	apt-get update
 	apt-get install apache2 gcc make libxml2-dev autoconf ca-certificates unzip nodejs curl libcurl4-openssl-dev pkg-config libssl-dev screen -y
 	if [ $? != 0 ]; then
@@ -156,7 +160,7 @@ else
 	echo 'date.timezone = Europe/Paris' >> /usr/local/lib/php.ini
 	echo 'extension=pthreads.so' >> /usr/local/lib/php.ini
 	
-	apt-get install libapache2-mod-php5 php5-curl -y
+	apt-get install libapache2-mod-php5.6 php5.6-curl -y
 	if [ $? != 0 ]; then
 		echo "(LINE 162) There is an error. Are you running apt application somewhere?"
 		echo "Can you check your debian source list?"
@@ -207,12 +211,12 @@ else
 			read -p "Can't connect, please retry: " -e -i $rootpasswd rootpasswd
 		done
 		mysql -u root -p$rootpasswd -e "CREATE DATABASE ebotv3;"
-		mysql -u root -p$rootpasswd -e "CREATE USER ebotv3@localhost IDENTIFIED BY '$SQLPASSWORDEBOTV3';"
+		mysql -u root -p$rootpasswd -e "CREATE USER ebotv3@localhost IDENTIFIED WITH mysql_native_password BY '$SQLPASSWORDEBOTV3';"
 		mysql -u root -p$rootpasswd -e "GRANT ALL PRIVILEGES ON ebotv3.* TO 'ebotv3'@'localhost';"
 		mysql -u root -p$rootpasswd -e "FLUSH PRIVILEGES;"
 	fi
 	
-	apt-get install php5-mysql -y
+	apt-get install php5.6-mysql -y
 	if [ $? != 0 ]; then
 		echo "(LINE 213) There is an error. Are you running apt application somewhere?"
 		echo "Can you check your debian source list?"
