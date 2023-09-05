@@ -120,6 +120,10 @@ else
 
 	LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
  	LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/apache2
+
+  	wget https://dev.mysql.com/get/mysql-apt-config_0.8.12-1_all.deb
+        dpkg -i mysql-apt-config_0.8.12-1_all.deb
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 467B942D3A79BD29
  
 	apt-get update
 	apt-get install apache2 gcc make libxml2-dev autoconf ca-certificates unzip nodejs curl libcurl4-openssl-dev pkg-config libssl-dev screen -y
@@ -182,7 +186,7 @@ else
 		echo "YOU WILL NEED IT AFTER FOR EBOT!!!"
 		read -n1 -r -p "Press any key to continue..."
 		
-		apt-get install mysql-server -y
+		apt-get install mysql-server=5.7* -y
 		if [ $? != 0 ]; then
 			echo "(LINE 183) There is an error. Are you running the APT application somewhere?"
 			echo "Can you check your debian source list?"
